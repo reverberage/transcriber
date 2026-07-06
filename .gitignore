@@ -8,3 +8,10 @@ build/
 .coverage
 htmlcov/
 .DS_Store
+
+# N3RVERBERAGE — NEVER COMMIT (template-controlled)
+.n3rverberage/
+.opencode/
+.githooks/
+AGENTS.md
+opencode.json
