@@ -44,9 +44,7 @@ class OpenAIWhisperEngine(TranscriptionEngine):
         segments = []
         if hasattr(result, "segments") and result.segments:
             for seg in result.segments:
-                segments.append(
-                    Segment(start=seg.start, end=seg.end, text=seg.text)
-                )
+                segments.append(Segment(start=seg.start, end=seg.end, text=seg.text))
 
         return Transcript(
             text=result.text,

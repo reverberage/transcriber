@@ -18,9 +18,7 @@ app = typer.Typer(
 def main(
     file_path: str = typer.Argument(..., help="Path to audio/video file"),
     engine: str = typer.Option("openai", help="Engine: 'openai' or 'local'"),
-    language: str | None = typer.Option(
-        None, help="Language code (e.g., 'en', 'es')"
-    ),
+    language: str | None = typer.Option(None, help="Language code (e.g., 'en', 'es')"),
     model: str | None = typer.Option(None, help="Model name override"),
     output_format: str = typer.Option(
         "text", help="Output format: text, srt, vtt, json"

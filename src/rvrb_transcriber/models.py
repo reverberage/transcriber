@@ -31,9 +31,7 @@ class Transcript(BaseModel):
     """Complete transcription result."""
 
     text: str = Field(description="Full transcribed text")
-    segments: list[Segment] = Field(
-        default_factory=list, description="Timed segments"
-    )
+    segments: list[Segment] = Field(default_factory=list, description="Timed segments")
     language: str = Field(default="unknown", description="Detected language code")
     duration_seconds: float = Field(
         default=0.0, description="Audio duration in seconds"
@@ -44,7 +42,9 @@ class Transcript(BaseModel):
         lines: list[str] = []
         for i, seg in enumerate(self.segments, 1):
             lines.append(str(i))
-            lines.append(f"{_format_srt_time(seg.start_timedelta)} --> {_format_srt_time(seg.end_timedelta)}")
+            lines.append(
+                f"{_format_srt_time(seg.start_timedelta)} --> {_format_srt_time(seg.end_timedelta)}"
+            )
             lines.append(seg.text.strip())
             lines.append("")
         return "\n".join(lines)
@@ -53,7 +53,9 @@ class Transcript(BaseModel):
         """Export as WebVTT subtitle format."""
         lines = ["WEBVTT", ""]
         for seg in self.segments:
-            lines.append(f"{_format_vtt_time(seg.start_timedelta)} --> {_format_vtt_time(seg.end_timedelta)}")
+            lines.append(
+                f"{_format_vtt_time(seg.start_timedelta)} --> {_format_vtt_time(seg.end_timedelta)}"
+            )
             lines.append(seg.text.strip())
             lines.append("")
         return "\n".join(lines)

@@ -17,7 +17,13 @@ Usage:
 from .models import Transcript, Segment
 from .engine import OpenAIWhisperEngine, LocalWhisperEngine
 
-__all__ = ["Transcript", "Segment", "transcribe", "OpenAIWhisperEngine", "LocalWhisperEngine"]
+__all__ = [
+    "Transcript",
+    "Segment",
+    "transcribe",
+    "OpenAIWhisperEngine",
+    "LocalWhisperEngine",
+]
 
 
 def transcribe(

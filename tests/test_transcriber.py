@@ -20,6 +20,7 @@ def test_transcribe_openai_missing_key(monkeypatch):
 
     # We need the file to exist to get past file check, then fail on key
     import tempfile
+
     with tempfile.NamedTemporaryFile(suffix=".mp3") as f:
         with pytest.raises(ValueError, match="OpenAI API key required"):
             transcribe(f.name, engine="openai", api_key=None)
