@@ -1,7 +1,7 @@
 [project]
 name = "rvrb-transcriber"
 version = "0.1.0"
-description = "Atomic audio/video transcription — a LEGO piece of the reverberage newsroom ecosystem"
+description = "Atomic audio/video transcription — a composable satellite in the reverberage ecosystem"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.11"

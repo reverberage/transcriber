@@ -2,7 +2,7 @@
 
 **Atomic audio/video transcription.** Audio in, text out.
 
-Part of the [reverberage](https://github.com/reverberage) ecosystem — composable LEGO pieces for the newsroom.
+Part of the [reverberage](https://github.com/reverberage) ecosystem — composable MCP-native toolkits for audio, video, and text.
 
 ## Install
 
