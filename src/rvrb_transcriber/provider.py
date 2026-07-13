@@ -104,7 +104,7 @@ def get_provider(
     Reserved for future multimodal features.
     """
     resolved_model = model or DEFAULT_MODEL
-    resolved_provider = provider or os.environ.get("N3RVERBERAGE_PROVIDER") or "qwen"
+    resolved_provider = provider or os.environ.get("N3RVERBERAGE_PROVIDER") or "local"
 
     # Try n3rverberage first (preferred — has fallback chain + quota detection)
     try:
