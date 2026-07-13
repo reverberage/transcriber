@@ -17,9 +17,12 @@ app = typer.Typer(
 @app.command()
 def main(
     file_path: str = typer.Argument(..., help="Path to audio/video file"),
-    engine: str = typer.Option("openai", "--engine", "-e", help="Whisper engine: 'openai' or 'local'"),
+    engine: str = typer.Option(
+        "openai", "--engine", "-e", help="Whisper engine: 'openai' or 'local'"
+    ),
     provider: str | None = typer.Option(
-        None, "--provider",
+        None,
+        "--provider",
         help="Provider name for LLM features: qwen, openai, local.  Overrides N3RVERBERAGE_PROVIDER.",
     ),
     language: str | None = typer.Option(None, help="Language code (e.g., 'en', 'es')"),
