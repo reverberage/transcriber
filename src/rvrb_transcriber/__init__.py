@@ -15,7 +15,7 @@ Usage:
 """
 
 from .models import Transcript, Segment
-from .engine import OpenAIWhisperEngine, LocalWhisperEngine
+from .engine import OpenAIWhisperEngine, LocalWhisperEngine, TranscriptionEngine
 from .provider import ModelProvider, get_provider, DEFAULT_MODEL, DEFAULT_BASE_URL
 
 __all__ = [
@@ -59,6 +59,7 @@ def transcribe(
     if not path.exists():
         raise FileNotFoundError(f"File not found: {file_path}")
 
+    engine_obj: TranscriptionEngine
     if engine == "openai":
         import os
 
@@ -69,9 +70,7 @@ def transcribe(
                 "or pass api_key parameter."
             )
         engine_obj = OpenAIWhisperEngine(api_key=key, model=model or "whisper-1")
-    elif engine == "local":
+    else:  # engine == "local"
         engine_obj = LocalWhisperEngine(model=model or "base")
-    else:
-        raise ValueError(f"Unknown engine: '{engine}'. Use 'openai' or 'local'.")
 
     return engine_obj.transcribe(file_path, language=language)

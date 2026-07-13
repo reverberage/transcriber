@@ -21,7 +21,11 @@ except ImportError:
     )
 
 from rvrb_transcriber import Transcript
-from rvrb_transcriber.engine import LocalWhisperEngine, OpenAIWhisperEngine
+from rvrb_transcriber.engine import (
+    LocalWhisperEngine,
+    OpenAIWhisperEngine,
+    TranscriptionEngine,
+)
 
 # ---------------------------------------------------------------------------
 # MCP Server
@@ -65,6 +69,7 @@ def transcribe(
     if not path.exists():
         raise FileNotFoundError(f"File not found: {file_path}")
 
+    engine_obj: TranscriptionEngine
     # Select engine
     if engine == "openai":
         import os
@@ -73,10 +78,8 @@ def transcribe(
         if not api_key:
             raise ValueError("OPENAI_API_KEY required for 'openai' engine")
         engine_obj = OpenAIWhisperEngine(api_key=api_key, model=model or "whisper-1")
-    elif engine == "local":
+    else:  # engine == "local"
         engine_obj = LocalWhisperEngine(model=model or "base")
-    else:
-        raise ValueError(f"Unknown engine: {engine!r}. Use 'openai' or 'local'.")
 
     # Transcribe
     result: Transcript = engine_obj.transcribe(str(path), language=language)
