@@ -16,6 +16,7 @@ Usage:
 
 from .models import Transcript, Segment
 from .engine import OpenAIWhisperEngine, LocalWhisperEngine
+from .provider import ModelProvider, get_provider, DEFAULT_MODEL, DEFAULT_BASE_URL
 
 __all__ = [
     "Transcript",
@@ -23,6 +24,10 @@ __all__ = [
     "transcribe",
     "OpenAIWhisperEngine",
     "LocalWhisperEngine",
+    "ModelProvider",
+    "get_provider",
+    "DEFAULT_MODEL",
+    "DEFAULT_BASE_URL",
 ]
 
 
